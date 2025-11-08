@@ -1,0 +1,31 @@
+TERMİNAL KOMUTLARI
+
+clear
+ls  - lists files current dir
+pwd - print working directory
+
+cd    -change directory
+cd  ..  level down
+cd  dosyaAdı  -dosya içine girer
+cd veya cd/  -en alt dosyaya gider
+mkdir  learnGit   -makeDirectory klasör oluştur
+touch  index.html   -dosya oluşturur
+rm  index.html   -remove -dosya silmek için
+rm -rf learnGit  - klasör silmek için
+
+$ git config --global user.name  HRC   isim ve mail tanımlama 
+$ git config --global user.email  isim-mail girmezsen sorgular
+git status   git durumunu gösterir
+git init   -Initializes empty Git repository - klasöre git tanımlar
+ls -la   -gizli kalsörleri de gösterir (.git de görünür)
+
+(git branch -m main master   - ana branch adını değiştirir)
+----------------------------------------------------
+
+git status yazınca
+untracked files ile hiç işlem(git anlamında) yapılmımış dosyaları gösterir.
+eğer "git add <file>" yaparsak bu dosyayı ileride commit edilecek dosyaların hazır tutulduğu bir ARA BÖLÜME (cache-d) ekler. 
+
+git log   -kayıtları(commitleri) listeler
+
+git add .  -tüm dosyaları cache'ler
