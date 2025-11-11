@@ -60,3 +60,43 @@ sonra branch'i mainle birleştiriyoruz ( git merge branchTest )
 Fast forwarding: Bir Branch açıp oradan projeyi ilerlettikten sonra (https://prnt.sc/mZZDTkN-xGvF)
     main-master'da hiçbir değişiklik yapılmadığı halde branch'i merge etmeye denir. 
     (terminal üzerinden commit atılınca git 'Fast-forward' ibaresini gösterir) 
+
+
+
+Local'de Oluşturulmuş Ama Hiç Push Edilmemiş (GitHub'da görünmeyen) Branchleri Pushlama
+ÇÖZÜM:
+1. Tüm local branch’leri gör
+
+Terminali (VS Code’un alt kısmındaki Terminal sekmesi) aç:
+git branch
+Bu sana local branch listesini gösterir.
+
+
+2. Remote branch’leri kontrol et
+git branch -r
+Bu komut, GitHub’daki (remote) branch’leri listeler.
+Eğer branch’lerin burada yoksa, henüz push edilmemişlerdir.
+
+
+3. Eksik branch’i GitHub’a gönder
+Diyelim ki localde feature/ui isimli bir branch’in var. Şunu çalıştır:
+git push -u origin feature/ui
+
+Açıklama:
+origin: GitHub’daki repo.
+feature/ui: göndermek istediğin branch adı.
+-u: bu branch ile GitHub’daki aynı isimli branch’i birbirine bağlar (bir kere yapman yeterli).
+
+
+4. Tüm branch’leri tek seferde push etmek istersen
+⚠️ Bu komut dikkatli kullanılmalı, çünkü tüm local branch’leri GitHub’a yollar.
+git push --all
+Bu işlemden sonra GitHub’daki Branches sekmesinde hepsini görebilirsin.
+
+
+5. (İsteğe bağlı) Remote bağlantısını kontrol et
+Yanlış bir GitHub reposuna push etmiyorsun diye emin olmak için:
+git remote -v
+Çıktı şu şekilde olmalı:
+origin  https://github.com/kullaniciadi/repoadi.git (fetch)
+origin  https://github.com/kullaniciadi/repoadi.git (push)
