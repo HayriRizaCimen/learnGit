@@ -1,1 +1,53 @@
-<h1>boş index ilk değişiklik</h1>
+<html> 
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Basit Sayaç</title>
+        <style>
+            :root{font-family:system-ui,Segoe UI,Roboto,Arial;background:#f7f9fc;color:#111}
+            body{display:flex;align-items:center;justify-content:center;height:100vh;margin:0}
+            .card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 6px 18px rgba(20,30,60,0.08);text-align:center;min-width:260px}
+            h1{font-size:18px;margin:0 0 12px}
+            .display{font-size:40px;font-weight:700;padding:12px 18px;border-radius:8px;background:#f0f4ff;margin-bottom:12px}
+            .controls{display:flex;gap:8px;justify-content:center}
+            button{padding:10px 14px;font-size:18px;border:0;border-radius:8px;cursor:pointer;background:#2b6df6;color:#fff}
+            button#decr{background:#ff6b6b}
+            button#reset{background:#6b7280}
+            button:active{transform:translateY(1px)}
+        </style>
+    </head>
+    <body>
+        <div class="card" role="application" aria-label="Basit Sayaç">
+            <h1>Basit Sayaç</h1>
+            <div id="value" class="display" aria-live="polite">0</div>
+            <div class="controls">
+                <button id="decr" aria-label="Azalt">-</button>
+                <button id="incr" aria-label="Arttır">+</button>
+                <button id="reset" aria-label="Sıfırla">Sıfırla</button>
+            </div>
+        </div>
+
+        <script>
+            let count = 0;
+            const display = document.getElementById('value');
+            const incr = document.getElementById('incr');
+            const decr = document.getElementById('decr');
+            const reset = document.getElementById('reset');
+
+            const render = () => display.textContent = count;
+
+            incr.addEventListener('click', () => { count++; render(); });
+            decr.addEventListener('click', () => { count--; render(); });
+            reset.addEventListener('click', () => { count = 0; render(); });
+
+            // Basit klavye kısayolları: +, -, 0
+            document.addEventListener('keydown', e => {
+                if (e.key === '+' || e.key === '=') { count++; render(); }
+                if (e.key === '-') { count--; render(); }
+                if (e.key === '0') { count = 0; render(); }
+            });
+
+            render();
+        </script>
+    </body>
+</html>
