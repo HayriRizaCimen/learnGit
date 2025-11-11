@@ -1,0 +1,3 @@
+Fast forwarding: Bir Branch açıp oradan projeyi ilerlettikten sonra (https://prnt.sc/mZZDTkN-xGvF)
+    main-master'da hiçbir değişiklik yapılmadığı halde branch'i merge etmeye denir. 
+    (terminal üzerinden commit atılınca git 'Fast-forward' ibaresini gösterir) 
