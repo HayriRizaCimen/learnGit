@@ -29,3 +29,9 @@ eğer "git add <file>" yaparsak bu dosyayı ileride commit edilecek dosyaların 
 git log   -kayıtları(commitleri) listeler
 
 git add .  -tüm dosyaları cache'ler
+
+git commit -m "neler yapıldı notları"   -Cache'de bekleyen tüm değişiklikleri Commit eder
+
+
+
+
