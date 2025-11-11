@@ -1,4 +1,4 @@
-TERMİNAL KOMUTLARI
+GIT TERMİNAL KOMUTLARI - NOTLAR
 
 clear
 ls  - lists files current dir
@@ -24,14 +24,34 @@ ls -la   -gizli kalsörleri de gösterir (.git de görünür)
 
 git status yazınca
 untracked files ile hiç işlem(git anlamında) yapılmımış dosyaları gösterir.
-eğer "git add <file>" yaparsak bu dosyayı ileride commit edilecek dosyaların hazır tutulduğu bir ARA BÖLÜME (cache-d) ekler. 
+** eğer "git add <file>" yaparsak bu dosyayı ileride commit edilecek dosyaların hazır tutulduğu bir ARA BÖLÜME (cache-d) ekler. 
 
 git log   -kayıtları(commitleri) listeler
 
-git add .  -tüm dosyaları cache'ler
+git commit -m  "commit notlarıı"
 
-git commit -m "neler yapıldı notları"   -Cache'de bekleyen tüm değişiklikleri Commit eder
+GIT IGNORE (herkes tarafından görünmesini istemediğimiz gizli dosyaları nasıl pushlarız) git bu dosyaları takip etmez, güncellenmez, değişiklikleri algılamaz
+gizli.txt  adında (iism önemsiz) dosya oluşturup içini dolduruyoruz
+touch .gitignore   dosyası oluşturulur(  root'ta )
+sonra .gitignore içerisine gizli.txt (dosyaların adını) yazıyoruz
 
 
+YENİ  BRANCH AÇMA
+git branch branchTest  (başka isimde yazılabilir)
+git commitler attıldı 
+
+git switch main   (dersek master veya main'e geri döneriz, en başa)
+sonra mainde commitler attık
 
 
+     -  - - -- 
+- - -            -main
+    -   -   -
+git branch  branch'leri listeler, konum branchi yeşil ve yıldızlı gösterir
+git switch branchTest  -istediğimiz branch'e geçiş yaparız
+
+
+artık branchTest  ve main olarak iki branch var sonra bunları birleştiriyoruz.
+
+önce main'e gidiyoruz  (git switch branchTest)
+sonra branch'i mainle birleştiriyoruz ( git merge branchTest )
