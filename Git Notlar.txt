@@ -100,3 +100,34 @@ git remote -v
 Çıktı şu şekilde olmalı:
 origin  https://github.com/kullaniciadi/repoadi.git (fetch)
 origin  https://github.com/kullaniciadi/repoadi.git (push)
+
+
+--------------------------------------------------------
+
+git STASH:
+ çalışılan branch yarım bırakılacaksa, üzerindeki değişikliklerin main'i etkilememesi için kullanılır. yapılan değişiklikler ağaçta görünmez
+örn:
+hayri@monster MINGW64 ~/Desktop/learnGit (stashTest)
+$ git stash
+Saved working directory and index state WIP on stashTest: 86fc22e Merge branch 'conflictBranchi'
+
+$ git status
+On branch stashTest
+nothing to commit, working tree clean
+(koda baktığımızda da değişiklikleri göremeyiz) 
+
+Sonrasında main'e geçip istediğimiz geliştirmeyi eski sürüm üzerinden yapabiliriz
+Main üstündeki işimizi bitirdikten sonra tekrar çalışmak istediğimiz branche'e döneri(stashTest)
+
+hayri@monster MINGW64 ~/Desktop/learnGit (stashTest)
+**$ git stash pop**   -> yazdığımızda eski değişiklikler geri gelir
+On branch stashTest
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+    modified:   index.html  
+no changes added to commit (use "git add" and/or "git commit -a")
+
+-index.html dosyasındaki değişiklikler geri gelmiş olur.
+
+
+--------------------------------------------------------
