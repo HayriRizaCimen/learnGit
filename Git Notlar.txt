@@ -100,3 +100,19 @@ git remote -v
 Çıktı şu şekilde olmalı:
 origin  https://github.com/kullaniciadi/repoadi.git (fetch)
 origin  https://github.com/kullaniciadi/repoadi.git (push)
+
+
++++STASH DETAY+++
+birden fazla kez "stash" kullanabiliriz. her kulladığımızda yapılan değişikliği saklar ve biz güncel kod üstünde değişiklik yaparız. 
+birden fazla stash'i görüntülemek için kullanım:
+$ git stash list
+stash@{0}: WIP on stashTest: 86fc22e Merge branch 'conflictBranchi'
+stash@{1}: WIP on stashTest: 86fc22e Merge branch 'conflictBranchi'
+
+saklanan stashleri ayrı ayrı getirip kullanabiliriz:
+$ git stash apply stash@{0}
+
+istenen stash çağırılıp commit edilebilir.
+
+tüm stash listesini silme:
+$ git stash clear  
