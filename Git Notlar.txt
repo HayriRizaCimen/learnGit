@@ -102,8 +102,7 @@ origin  https://github.com/kullaniciadi/repoadi.git (fetch)
 origin  https://github.com/kullaniciadi/repoadi.git (push)
 
 
---------------------------------------------------------
-
+-----------------------GİT STASH---------------------------------
 git STASH:
  çalışılan branch yarım bırakılacaksa, üzerindeki değişikliklerin main'i etkilememesi için kullanılır. yapılan değişiklikler ağaçta görünmez
 örn:
@@ -129,10 +128,7 @@ no changes added to commit (use "git add" and/or "git commit -a")
 
 -index.html dosyasındaki değişiklikler geri gelmiş olur.
 
-
 --------------------------------------------------------
-
-
 
 +++STASH DETAY+++
 birden fazla kez "stash" kullanabiliriz. her kulladığımızda yapılan değişikliği saklar ve biz güncel kod üstünde değişiklik yaparız. 
@@ -149,4 +145,91 @@ istenen stash çağırılıp commit edilebilir.
 tüm stash listesini silme:
 $ git stash clear  
 
---------------------------Stash Sonu-------------------------------------
+................................Stash SONU................................
+
+
+
+
+
+
+
+---------------------------------GEÇMİŞE DÖNME İŞLEMLERİ---------------------------------
+
+git restore 'file name'  
+   -> bir dosya değişikliğini kaydettiğimizde, terminalde git status baktığımızda bize
+git add ve git restore seneği sunar. Add cache'lerken, restore değşikliği geri alır.(son committeki hale döner)
+
+
+................................ checkout ................................
+git checkout <gidilecekCommitId> 
+   -> önceki commitlerden birine dönmek için kullanılır. Çalıştırınca örneğin sondan bir önceki commit HEAD olarak görünür
+ancak son commit yine de orada kalır, silinmez. (chekout, yani orayı kontrol-bakma gibi düşünülebilir)
+(HEAD detached at 1c5b00b) uyarısını alırız. 
+Geldiğimiz yeni HEAD üzerinden başka bir Branch açıp oradan devam edilebilir. > https://prnt.sc/oJAZE7Hxp9iR
+................................ checkout SONU ................................
+
+
+................................ reset ................................
+git reset <dönülecekCommitId> 
+   -> bu komutla verdiğimiz Idli commit , son commit olur. bu committen sonraki commitler silinir ama DOSYADAKİ DEĞİŞİKLİKLER KALIR. Yani sadece aradaki commit IDLER silinmiş gibi olur
+
+$ git reset 1c5b00b6bff0cfae53a933381043163506102acd
+Unstaged changes after reset:
+M       Git Notlar.txt
+................................ reset Sonu................................
+
+
+
+..................... reset --hard  ................................
+git reset --hard <kesinDönülecekCommitID> 
+   -> tüm projeyi verilen committeki versiyona Zorla döndürür. RESET'ten farklı olarak aradaki tüm eklenmiş dosya verileri 
+silinir. Geri dönüşü olmaz, aradaki commitler kaybedilir
+
+örn:
+$ git reset --hard 1c5b00b6bff0cfae53a933381043163506102acd
+HEAD is now at 1c5b00b Merge branch 'stashTest'  (silindi, güncel HEAD'i gösteriyor)
+..................... reset --hard SONU ................................
+
+
+
+.....................Revert ................................
+Geçmiş Commit Log history sırasını bozmadan commitleri geri almak isterse  "git revert <toBeRevertedCommitId>" kullanılır.
+1   2   3   4  
+örneğin 4 commit var. 3.yü kullanarak devam etmek istiyorum. Ama 4'de kaybolmasın ki ileride projeleri birleştirirsek başkasındaki 4 çakışmasın, geleceği-dek düşeceği yer belli olsun istiyorum.
+o zaman 4. commitin IDsi ile onu revert ediyorum ve bu revertüde commit edeceğim için yeni bir mesaj giriyorum
+git revert commit4id
+
+
+örn:
+$ git log
+commit 3547a8e7bd712635524f3633143146de0fa0964e (HEAD -> main)
+Author: HayriRizaCimen <hayri_cimen@hotmail.com>
+Date:   Thu Nov 13 19:55:41 2025 +0300
+
+    test2
+.....log devamı
+
+$ git revert 3547a8e7bd712635524f3633143146de0fa0964e
+fatal: cannot lock ref 'HEAD': is at 093b40b8cc8da638d7f4da737418f416684b6194 but expected 3547a8e7bd712635524f3633143146de0fa0964e4
+
+
+$ git log
+commit 093b40b8cc8da638d7f4da737418f416684b6194 (HEAD -> main)
+Author: HayriRizaCimen <hayri_cimen@hotmail.com>
+Date:   Thu Nov 13 19:59:12 2025 +0300
+
+    Revert "test2"
+    test2yiRevertEttik
+    This reverts commit 3547a8e7bd712635524f3633143146de0fa0964e.
+
+commit 3547a8e7bd712635524f3633143146de0fa0964e
+Author: HayriRizaCimen <hayri_cimen@hotmail.com>
+Date:   Thu Nov 13 19:55:41 2025 +0300
+
+    test2
+...log devamı
+
+işlem sonunda test2'deki kodlar silindi ama  test2 ve Revert "test2"   commitleri kalmış oldu
+.....................Revert Sonu................................
+
+
