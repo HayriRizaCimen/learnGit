@@ -213,7 +213,7 @@ $ git revert 3547a8e7bd712635524f3633143146de0fa0964e
 fatal: cannot lock ref 'HEAD': is at 093b40b8cc8da638d7f4da737418f416684b6194 but expected 3547a8e7bd712635524f3633143146de0fa0964e4
 
 
-$ git log
+"$ git log
 commit 093b40b8cc8da638d7f4da737418f416684b6194 (HEAD -> main)
 Author: HayriRizaCimen <hayri_cimen@hotmail.com>
 Date:   Thu Nov 13 19:59:12 2025 +0300
@@ -227,9 +227,31 @@ Author: HayriRizaCimen <hayri_cimen@hotmail.com>
 Date:   Thu Nov 13 19:55:41 2025 +0300
 
     test2
-...log devamı
+...log devamı"
 
 işlem sonunda test2'deki kodlar silindi ama  test2 ve Revert "test2"   commitleri kalmış oldu
 .....................Revert Sonu................................
 
+
 .............................Git Diff....................................
+iki commit arası yapılan değişiklikleri görmek için kullanılır 
+Kullanım: git diff <commitId1> <commitId2> (commitId1 eski commit, commitId2 yeni commit)   
+(boşluk yerine .. 'da kullanılabilir "06102acd..75701ea4")
+
+örn: "
+hayri@monster MINGW64 ~/Desktop/learnGit (main)
+$ git diff b04b9e5e5f1bcfbfbeb75c832d57dd71ca944f5f 75701ea48149b5ec51c330081dc1edb1fa90817
+diff --git a/Git Notlar.txt b/Git Notlar.txt
+index 85675bb..3a52b91 100644
+--- a/Git Notlar.txt
++++ b/Git Notlar.txt
+@@ -232,4 +232,4 @@ Date:   Thu Nov 13 19:55:41 2025 +0300
+ işlem sonunda test2'deki kodlar silindi ama  test2 ve Revert "test2"   commitlri kalmış oldu
+ .....................Revert Sonu................................
+
+-.............................Git Diff....................................
++
+"
+
+ .....................Git Diff Sonu................................
+
