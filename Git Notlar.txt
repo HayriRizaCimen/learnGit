@@ -253,6 +253,32 @@ index 85675bb..3a52b91 100644
 -.............................Git Diff....................................
 +
 "
-
  .....................Git Diff Sonu................................
+
+
+
+ .....................Git Rebase................................
+ https://prnt.sc/l2XrpNkbsmNL
+    Git rebase, bir branch'in tabanını (base) başka bir branch'in sonuna taşımak için kullanılır.
+    Bu, commit geçmişini daha temiz ve doğrusal hale getirir. 
+    Özellikle feature branch'leri main/master branch'ine entegre ederken faydalıdır.
+    Kullanımı:
+    1. Önce feature branch'ine geç:
+        git switch feature-branch  
+    2. Sonra rebase komutunu çalıştır:
+        git rebase main
+    
+    3. Eğer çatışmalar (conflicts) oluşursa, Git seni bilgilendirir.
+       Çatışmaları manuel olarak çöz ve ardından:
+        git add <çözülen-dosya>
+        git rebase --continue
+    4. Rebase işlemi tamamlandığında, feature branch'in main branch'inin en son haliyle güncellenmiş olur.
+    5. Son olarak, feature branch'i remote'a push et:
+        git push origin feature-branch --force
+    Not: Rebase işlemi commit geçmişini değiştirir (merge commitleri temizler), bu yüzden dikkatli kullanılmalıdır.
+ .....................Git Rebase Sonu...............................    
+
+-----------------------GİT NOTLAR SON-----------------------
+
+
 
