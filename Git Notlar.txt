@@ -235,7 +235,8 @@ işlem sonunda test2'deki kodlar silindi ama  test2 ve Revert "test2"   commitle
 
 .............................Git Diff....................................
 iki commit arası yapılan değişiklikleri görmek için kullanılır 
-Kullanım: git diff <commitId1> <commitId2> (commitId1 eski commit, commitId2 yeni commit)   
+Kullanım: git diff <eskiCommitId1> <yeniCommitId2> 
+(eski-yeni sırasıyla yazınca değişiklikler +Yeşil gösterir, yeni-eski sırasıyla yazınca -Kırmızı gösterir)   
 (boşluk yerine .. 'da kullanılabilir "06102acd..75701ea4")
 
 örn: "
